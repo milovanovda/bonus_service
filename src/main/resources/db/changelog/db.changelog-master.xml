@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/pro/liquibase-pro-4.19.xsd">
+
+    <changeSet id="TRANSACTIONS::CREATE" author="d.milovanov">
+        <createTable tableName="TRANSACTIONS">
+            <column name="ID" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="USER_ID" type="nvarchar(250)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_AT" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="AMOUNT" type="numeric(19,2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="BONUS_PROGRAM::CREATE" author="d.milovanov">
+        <createTable tableName="BONUS_PROGRAM">
+            <column name="ID" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="PROGRAM_NAME" type="varchar(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="BONUS_TYPE" type="varchar(100)"/>
+            <column name="RULES_JSON" type="varchar(8000)"/>
+            <column name="START_DATE" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="END_DATE" type="date"/>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>
